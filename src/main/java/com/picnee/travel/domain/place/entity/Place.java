@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -48,7 +49,44 @@ public class Place extends BaseEntity {
     @Column(name = "region")
     @Enumerated(EnumType.STRING)
     private Region region;
+    @Column(name = "google_synced_at")
+    private LocalDateTime googleSyncedAt;
     @Builder.Default
     @OneToMany(mappedBy = "place", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<OpeningHours> openingHours = new ArrayList<>();
+
+    public boolean isGoogleSyncExpired(long refreshAfterDays) {
+        return googleSyncedAt == null || googleSyncedAt.isBefore(LocalDateTime.now().minusDays(refreshAfterDays));
+    }
+
+    public void updatePlaceInfo(
+            String placeName,
+            String url,
+            String formattedAddress,
+            String formattedPhoneNumber,
+            Double rating,
+            String website,
+            String lat,
+            String lng,
+            PlaceType type,
+            Region region,
+            LocalDateTime googleSyncedAt
+    ) {
+        this.placeName = placeName;
+        this.url = url;
+        this.formattedAddress = formattedAddress;
+        this.formattedPhoneNumber = formattedPhoneNumber;
+        this.rating = rating;
+        this.website = website;
+        this.lat = lat;
+        this.lng = lng;
+        this.types = type;
+        this.region = region;
+        this.googleSyncedAt = googleSyncedAt;
+    }
+
+    public void replaceOpeningHours(List<OpeningHours> openingHours) {
+        this.openingHours.clear();
+        this.openingHours.addAll(openingHours);
+    }
 }

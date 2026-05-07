@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test;
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1
     username: sa
     password:
   jpa:
@@ -13,3 +13,10 @@ jwt:
   secret: secretsecretsecretsecret123secretsecretsecretsecret123===
   access-validity-in-seconds: 500
   refresh-validity-in-seconds: 6048000
+google:
+  place:
+    base-url: https://maps.googleapis.com/maps/api/place/details/json
+    api-key:
+    language: ko
+    refresh-after-days: 30
+    cache-ttl-days: 5

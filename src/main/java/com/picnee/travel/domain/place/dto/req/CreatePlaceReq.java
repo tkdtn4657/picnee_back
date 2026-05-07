@@ -8,6 +8,7 @@ import com.picnee.travel.domain.place.entity.Region;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +53,7 @@ public class CreatePlaceReq {
                 .lng(dto.getLng())
                 .types(type)
                 .region(region)
+                .googleSyncedAt(LocalDateTime.now())
                 .build();
     }
 }

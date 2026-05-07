@@ -18,3 +18,10 @@ logging:
       springframework:
         web: DEBUG
         web.filter.CommonsRequestLoggingFilter: DEBUG
+google:
+  place:
+    base-url: https://maps.googleapis.com/maps/api/place/details/json
+    api-key: ${GOOGLE_PLACE_API_KEY:}
+    language: ko
+    refresh-after-days: 30
+    cache-ttl-days: 5

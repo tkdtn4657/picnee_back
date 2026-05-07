@@ -20,7 +20,7 @@ public enum RegionMapper {
     }
 
     public boolean matches(String address) {
-        return address.contains(regionEngName) || address.contains(regionKorName);
+        return address != null && (address.contains(regionEngName) || address.contains(regionKorName));
     }
 
     public static Region getRegion(String address) {
