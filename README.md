@@ -308,9 +308,9 @@ Windows:
 
 | 이름 | 역할 | GitHub |
 | --- | --- | --- |
-| 이대원 | Backend | [@leebuwon](https://github.com/leebuwon) |
+| 이부원 | Backend | [@leebuwon](https://github.com/leebuwon) |
 | 이상수 | Backend | [@tkdtn4657](https://github.com/tkdtn4657) |
-| 이유희 | Backend | [@LeeYulhee](https://github.com/LeeYulhee) |
+| 이율희 | Backend | [@LeeYulhee](https://github.com/LeeYulhee) |
 
 ## 정리
 
